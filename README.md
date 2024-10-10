@@ -26,8 +26,7 @@ This project is a responsive website for Flower Bible University. It provides in
 2. Navigate to the project directory:
    cd flower-bible-university-website.
 3. Open the index.html file in your web browser to view the website.
-4. 
-Here's a sample README.md file for your webpage project. You can copy and paste this directly:
+4. Here's a sample README.md file for your webpage project. You can copy and paste this directly:
 
 markdown
 Copy code
