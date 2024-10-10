@@ -1,0 +1,723 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.header{
+    min-height: 100vh;
+    background-image:linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/Website\ \ page\ picture.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 150px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+.text-box{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.text-box h1{
+    font-size: 62px;
+}
+.text-box p{
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: #fff;
+}
+.hero-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 14px 40px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.hero-btn:hover{
+    border: 1px solid #f44336;
+    background: #ff5722;
+    transition: 1s;
+}
+
+nav .fa{
+    display: none;
+}
+
+@media(max-width: 700px) {
+    .text-box h1 {
+        font-size: 28px;
+    }
+    .text-box p {
+        font-size: 16px; /* Increased font size for better readability */
+    }
+    .nav-links ul li {
+        display: block;
+    }
+    .nav-links {
+        position: fixed;
+        background: #f44336;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+    
+    nav .fa {
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+    
+    .nav-links ul {
+        padding: 30px;
+    }
+} 
+
+/*--------------Courses Section----------*/
+/* Courses Section Styling */
+.Courses {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 70px; /* Space at the bottom */
+}
+
+.Courses h1 {
+    font-size: 48px; /* Bold heading */
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    text-transform: uppercase; /* Adds more authority to the title */
+    letter-spacing: 2px; /* Spacing for cleaner look */
+}
+
+.Courses p {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 800px; /* Limit paragraph width for readability */
+    margin: auto; /* Center align */
+}
+
+/* Row to hold all course columns */
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between; /* Equal spacing */
+    flex-wrap: wrap; /* Ensures it wraps on smaller screens */
+    gap: 20px; /* Adds spacing between columns */
+}
+
+/* Each individual course column */
+.course-col {
+    flex-basis: 23%; /* Width of each column */
+    background: #ffffff;
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 15px;
+    margin-bottom: 5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-col:hover {
+    transform: translateY(-10px); /* Hover lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.course-col h3 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+/* Add this to your styles.css file */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.button-container a.button {
+    display: inline-block;
+    padding: 20px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+.button-container a.button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for Degree Dropdown */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border 0.3s ease;
+}
+
+select:focus {
+    border-color: #003366;
+    outline: none;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-top: 15px;
+}
+/* Add this to style.css */
+
+button {
+    background-color: #00b4d8; /* Adjust to your primary color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0077b6; /* Darker shade for hover effect */
+}
+
+
+/* Add margin between dropdown and other elements */
+.course-col select {
+    margin-bottom: 20px;
+}
+
+
+/* Styling the course list */
+.course-col ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.course-col ul li {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #555;
+    padding: 10px 0; /* Space between items */
+    text-align: left; /* Align to left for readability */
+    border-bottom: 1px solid #e0e0e0; /* Divider between list items */
+}
+
+.course-col ul li:last-child {
+    border-bottom: none; /* Remove border on last item */
+}
+
+/* Note for General Studies program */
+.course-col .note {
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #999; /* Lighter color for the note */
+    margin-top: 10px;
+    text-align: left; /* Align to the left for emphasis */
+}
+
+/* Button inside each column */
+.info-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #003366;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+.info-btn:hover {
+    background-color: #002244; /* Darker color on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 900px) {
+    .course-col {
+        flex-basis: 45%; /* Reduce size for medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .course-col {
+        flex-basis: 100%; /* Full width for small screens */
+        margin-bottom: 30px; /* Additional margin for spacing */
+    }
+}
+
+/* Align columns in a single column on very small screens */
+@media (max-width: 700px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*------------ campus ----------*/
+.campus {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.campus-col {
+    flex-basis: 30%;  /* More space between columns */
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.campus-col img {
+    width: 100%;
+    height: 100%; /* Ensure image fills the container */
+    object-fit: cover; /* Prevent image distortion */
+    display: block;
+}
+
+.layer {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+.layer:hover {
+    background: rgba(226, 0, 0, 0.7);
+}
+
+.layer h3 {
+    width: 100%;
+    font-weight: 500;
+    color: #fff;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.layer:hover h3 {
+    bottom: 49%;
+    opacity: 1;
+}
+
+
+
+.testimonials {
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.testimonials-col {
+    flex-basis: 44%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+    background: #fff3f3;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.testimonials-col img {
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.testimonials-col p {
+    padding: 0;
+}
+
+.testimonials-col h3 {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.testimonials-col .fa {
+    color: #f44336;
+}
+
+@media(max-width: 700px) {
+    .testimonials-col img {
+        margin-left: 0px;
+        margin-right: 15px;
+    }
+}
+
+/*---------call to action--------*/
+.cta {
+    margin: 100px auto;
+    width: 80%;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/2.png);
+    background-position: center;
+    background-size: cover;
+    border-radius:10px;
+    text-align: center;
+    padding: 100px 0; 
+}
+
+.cta h1 {
+    color: #fff;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+@media(max-width: 700px) {
+    .cta h1{
+        font-size: 24px;
+    }
+}
+
+/*----------footer------*/
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer h4 {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.icons .fa {
+    color: #f44336;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px;
+}
+
+.fa-heart-o {
+    color: #f44336;
+}
+
+/*------------about us page---------*/
+
+.sub-header {
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(images/images.jpg);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+
+.sub-header h1 {
+    margin-top: 100px;
+}
+
+.about-us {
+    width:80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.about-col {
+    flex-basis: 48%;
+    padding: 30px 2px;
+}
+
+.about-col img{
+    width: 100%;
+}
+
+.about-col h1 {
+    padding-top: 0;
+}
+
+.about-col p {
+    padding: 15px 0 25px;
+}
+
+.red-btn {
+    border: 1px solid #f44336;
+    background: transparent;
+    color: #f44336;
+}
+
+.red-btn:hover {
+    color: #fff;
+}
+
+/*-----------contact us page ------------*/
+
+.location {
+    width: 80%;
+    margin: auto;
+    padding: 80;
+}
+
+.location iframe {
+    width: 100%;
+}
+
+.contact-us {
+    width: 80%;
+    margin: auto;
+}
+
+.contact-col {
+    flex-basis: 48%;
+    margin-bottom: 30px;
+}
+
+.contact-col div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.contact-col div .fa {
+    font-size: 28px;
+    color: #f44336;
+    margin: 10px;
+    margin-right: 30px;
+}
+
+.contact-col div p {
+    padding: 0;
+}
+
+.contact-col div h5 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 400;
+}
+
+.contact-col input, .contact-col textarea {  
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+/* Admission Form Section */
+
+/* Logo styling */
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.university-logo {
+    max-width: 150px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.admission-page {
+    width: 80%;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: #fff3f3;  /* Matching light background from other sections */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    font-family: 'Poppins', sans-serif;  /* Consistent with the rest of the site */
+    color: #333;  /* Standard text color for uniformity */
+}
+
+.admission-page h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #002147;  /* Primary color from the site */
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.admission-page label {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #002147;  /* Using the same tone for labels */
+}
+.admission-page input,
+.admission-page select,
+.admission-page textarea {
+    padding: 15px;
+    border: 1px solid #bbb; /* More distinct border */
+}
+
+.admission-page input:focus,
+.admission-page select:focus,
+.admission-page textarea:focus {
+    border-color: #004080;
+    box-shadow: 0 0 5px rgba(0, 64, 128, 0.5);
+}
+
+/*-----------*/
+.admission-page input[type="text"], 
+.admission-page input[type="email"], 
+.admission-page input[type="date"], 
+.admission-page select, 
+.admission-page textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;  /* Clean background for form fields */
+    font-family: 'Poppins', sans-serif;  /* Consistent font family */
+}
+
+.admission-page textarea {
+    resize: none;
+}
+
+.admission-page button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    background-color: #002147;  /* Matching primary site color */
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.admission-page button:hover {
+    background-color: #004080;  /* Darker shade for hover effect */
+}
+
+/* Add responsiveness */
+@media (max-width: 700px) {
+    .admission-page {
+        padding: 30px;
+    }
+
+    .admission-page h2 {
+        font-size: 28px;
+    }
+
+    .admission-page input[type="text"], 
+    .admission-page input[type="email"], 
+    .admission-page input[type="date"], 
+    .admission-page select, 
+    .admission-page textarea {
+        font-size: 14px;
+    }
+
+    .admission-page button {
+        font-size: 16px;
+    }
+}
+@media (max-width: 700px) {
+    .nav-links {
+        right: 0; /* Adjusted to make it visible when menu is opened */
+        transition: right 0.3s ease; /* Smooth transition */
+    }
+}

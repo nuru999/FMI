@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMI - About Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="images/FMI !.png" alt="FMI Logo"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="course.html">Courses</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>About Us</h1>
+    </section>
+
+    <!-------- About Us Content -------> 
+    <section class="about-us">
+        <div class="row">
+            <div class="about-col">
+                <h1>Shaping Global Leaders in Theology & Business</h1>
+                <p>At FMI Biblical Studies & Seminary, we are committed to providing world-class theological education. With a presence across multiple countries, including Kenya, the United Kingdom, the United States, South Africa, Tanzania, and Zambia, our mission is to raise a new generation of leaders who are equipped both spiritually and academically.</p>
+                <p>Our programs in theology, leadership, and business cater to individuals who aspire to serve in ministry, lead organizations, and make a lasting impact on their communities. With a focus on academic excellence and spiritual growth, FMI is shaping the future of global Christian leadership.</p>
+                <a href="course.html" class="hero-btn red-btn">Explore Our Programs</a>
+            </div>
+            <div class="about-col">
+                <img src="images/3.png" alt="FMI Global Presence">
+            </div>
+        </div>
+    </section>
+
+    <!------ Footer -------->
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>FMI Biblical Studies & Seminary is a global institution dedicated to advancing Christian education and leadership. We empower students through transformative programs that combine academic rigor with spiritual growth.</p>
+        <div class="icons">
+            <a href="https://facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="https://whatsapp.com" target="_blank"><i class="fa fa-whatsapp"></i></a>
+        </div>
+        <p>Made with <i class="fa fa-heart"></i> by Nuru Amudi</p>
+    </section>
+
+    <!------- JavaScript for Toggle Menu -------> 
+    <script>
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+</body>
+</html>

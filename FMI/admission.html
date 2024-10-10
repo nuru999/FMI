@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Admission Page Section -->
+    <div class="admission-page">
+        <div class="logo-container">
+            <img src="images/FMI !.png" alt="University Logo" class="university-logo">
+        </div>
+
+        <h2>Student Application</h2>
+
+        <p>As you prepare to join the Flower Bible International family, rest assured that you are joining generations of Christian leaders. Please complete the form below and submit your application.</p>
+
+        <form action="admission-handler.php" method="POST" enctype="multipart/form-data">
+            <!-- Personal Details -->
+            <h3>Personal Details</h3>
+
+            <!-- Name -->
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+
+            <!-- Email Address -->
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <!-- Confirm Email -->
+            <label for="confirmEmail">Confirm Email Address:</label>
+            <input type="email" id="confirmEmail" name="confirmEmail" placeholder="Re-enter your email" required>
+
+            <!-- Phone -->
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <!-- Program of Study -->
+            <h3>Program of Study</h3>
+            <p>Which degree program are you interested in?</p>
+            <label><input type="checkbox" name="program[]" value="Certificate"> Certificate</label><br>
+            <label><input type="checkbox" name="program[]" value="Diploma"> Diplomas</label><br>
+            <label><input type="checkbox" name="program[]" value="Associate degree"> Associate Degrees</label><br>
+            <label><input type="checkbox" name="program[]" value="Bachelor degree"> Bachelors Degrees</label><br>
+            <label><input type="checkbox" name="program[]" value="Masters degree"> Masters Degrees</label><br>
+            <label><input type="checkbox" name="program[]" value="Doctorate degree"> Doctorate Degrees</label><br>
+
+            <!-- Address -->
+            <h3>Address</h3>
+            <label for="address">Home Address:</label>
+            <input type="text" id="address" name="address" placeholder="Street Address" required>
+            <input type="text" id="address2" name="address2" placeholder="Street Address Line 2">
+            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="region" name="region" placeholder="State/Province/Region" required>
+            <input type="text" id="postalCode" name="postalCode" placeholder="Postal/Zip Code" required>
+
+            <!-- Education Background -->
+            <h3>Education Background</h3>
+
+            <!-- High School -->
+            <label for="highSchool">High School and Years Attended:</label>
+            <input type="text" id="highSchool" name="highSchool" placeholder="Enter your high school" required>
+
+            <label for="highSchoolAddress">High School Address:</label>
+            <input type="text" id="highSchoolAddress" name="highSchoolAddress" placeholder="Street Address" required>
+            <input type="text" id="highSchoolCity" name="highSchoolCity" placeholder="City" required>
+            <input type="text" id="highSchoolRegion" name="highSchoolRegion" placeholder="State/Province/Region" required>
+            <input type="text" id="highSchoolPostal" name="highSchoolPostal" placeholder="Postal/Zip Code" required>
+
+            <!-- Document Upload Section -->
+            <h3>Document Upload</h3>
+            <label for="cv">Upload your CV:</label>
+            <input type="file" id="cv" name="cv" accept=".pdf, .doc, .docx" required><br><br>
+
+            <label for="passportPhoto">Upload your Passport Photo:</label>
+            <input type="file" id="passportPhoto" name="passportPhoto" accept=".jpg, .jpeg, .png" required><br><br>
+
+            <!-- Signature -->
+            <h3>Signature</h3>
+            <label for="signature">By my signature, I certify that the information provided is correct:</label>
+            <!-- Signature canvas -->
+            <canvas id="signatureCanvas" width="500" height="200" style="border:1px solid #000000;"></canvas>
+
+            <!-- Buttons to clear and submit the signature -->
+            <br>
+            <button type="button" id="clearCanvas">Clear Signature</button>
+            <button type="submit" id="submitSignature">Submit Signature</button>
+
+            <!-- Hidden input to store the signature data URL -->
+            <input type="hidden" id="signature" name="signature" required>
+
+            <script>
+            // Get the canvas and its context
+            const canvas = document.getElementById('signatureCanvas');
+            const context = canvas.getContext('2d');
+            const signatureInput = document.getElementById('signature');
+            let isDrawing = false;
+
+            // Set up mouse/touch events for drawing
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            // Touch events for mobile
+            canvas.addEventListener('touchstart', startDrawing);
+            canvas.addEventListener('touchmove', draw);
+            canvas.addEventListener('touchend', stopDrawing);
+
+            function startDrawing(event) {
+                isDrawing = true;
+                context.beginPath();
+                context.moveTo(getMousePos(event).x, getMousePos(event).y);
+                event.preventDefault(); // Prevent scrolling on mobile
+            }
+
+            function draw(event) {
+                if (!isDrawing) return;
+                context.lineTo(getMousePos(event).x, getMousePos(event).y);
+                context.strokeStyle = "#000000";
+                context.lineWidth = 2;
+                context.stroke();
+                event.preventDefault(); // Prevent scrolling on mobile
+            }
+
+            function stopDrawing() {
+                if (!isDrawing) return;
+                isDrawing = false;
+                context.closePath();
+                // Save the signature as a data URL in the hidden input field
+                signatureInput.value = canvas.toDataURL();
+            }
+
+            // Get the mouse position relative to the canvas
+            function getMousePos(event) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: (event.clientX || event.touches[0].clientX) - rect.left,
+                    y: (event.clientY || event.touches[0].clientY) - rect.top
+                };
+            }
+
+            // Clear the canvas when the user clicks the "Clear Signature" button
+            document.getElementById('clearCanvas').addEventListener('click', function() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                signatureInput.value = ''; // Clear the hidden input value as well
+            });
+            </script>
+                 
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
