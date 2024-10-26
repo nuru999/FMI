@@ -20,7 +20,7 @@
 
         <p>As you prepare to join the Flower Bible International family, rest assured that you are joining generations of Christian leaders. Please complete the form below and submit your application.</p>
 
-        <form action="admission-handler.php" method="POST" enctype="multipart/form-data">
+        <form action="admission-handler.php" method="POST" enctype="multipart/form-data" onsubmit="saveSignature()">
             <!-- Personal Details -->
             <h3>Personal Details</h3>
 
@@ -93,10 +93,9 @@
             <!-- Signature canvas -->
             <canvas id="signatureCanvas" width="500" height="200" style="border:1px solid #000000;"></canvas>
 
-            <!-- Buttons to clear and submit the signature -->
+            <!-- Buttons to clear the signature -->
             <br>
             <button type="button" id="clearCanvas">Clear Signature</button>
-            <button type="submit" id="submitSignature">Submit Signature</button>
 
             <!-- Hidden input to store the signature data URL -->
             <input type="hidden" id="signature" name="signature" required>
@@ -139,8 +138,6 @@
                 if (!isDrawing) return;
                 isDrawing = false;
                 context.closePath();
-                // Save the signature as a data URL in the hidden input field
-                signatureInput.value = canvas.toDataURL();
             }
 
             // Get the mouse position relative to the canvas
@@ -157,9 +154,13 @@
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 signatureInput.value = ''; // Clear the hidden input value as well
             });
-            </script>
-                 
 
+            // Save the signature when the form is submitted
+            function saveSignature() {
+                signatureInput.value = canvas.toDataURL();
+            }
+            </script>
+             
             <!-- Submit Button -->
             <button type="submit">Submit Application</button>
         </form>
