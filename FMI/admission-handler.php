@@ -1,10 +1,10 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
-        // Establish a connection to SQLite database
-        $db = new SQLite3('admission.db');
+        // Establish a connection to SQLite database with absolute path
+        $db = new SQLite3(__DIR__ . '/admission.db');
 
-        // Collect form data safely using htmlspecialchars to avoid XSS attacks
+        // Collect form data with htmlspecialchars to avoid XSS attacks
         $firstName = htmlspecialchars($_POST['firstName']);
         $lastName = htmlspecialchars($_POST['lastName']);
         $email = htmlspecialchars($_POST['email']);
@@ -19,15 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $highSchool = htmlspecialchars($_POST['highSchool']);
         $highSchoolAddress = htmlspecialchars($_POST['highSchoolAddress']);
         $signature = $_POST['signature']; // Signature data
-        
-        // File uploads handling
-        $cvPath = "uploads/" . basename($_FILES["cv"]["name"]);
-        $passportPath = "uploads/" . basename($_FILES["passportPhoto"]["name"]);
-        
-        move_uploaded_file($_FILES["cv"]["tmp_name"], $cvPath);
-        move_uploaded_file($_FILES["passportPhoto"]["tmp_name"], $passportPath);
-        
-        // Prepare the SQL statement for insertion
+
+        // Handle file uploads
+        $cvPath = "";
+        $passportPath = "";
+
+        if (isset($_FILES["cv"]) && $_FILES["cv"]["error"] == 0) {
+            $cvPath = "uploads/" . basename($_FILES["cv"]["name"]);
+            move_uploaded_file($_FILES["cv"]["tmp_name"], $cvPath);
+        }
+
+        if (isset($_FILES["passportPhoto"]) && $_FILES["passportPhoto"]["error"] == 0) {
+            $passportPath = "uploads/" . basename($_FILES["passportPhoto"]["name"]);
+            move_uploaded_file($_FILES["passportPhoto"]["tmp_name"], $passportPath);
+        }
+
+        // Prepare the SQL statement
         $query = "INSERT INTO student_applications (
             first_name, last_name, email, phone, dob, program, address, address2, city, region, postal_code, 
             high_school, high_school_address, signature, cv_file_path, passport_file_path
@@ -36,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             :highSchool, :highSchoolAddress, :signature, :cvPath, :passportPath
         )";
 
-        // Prepare the statement to avoid SQL injections
+        // Bind values
         $stmt = $db->prepare($query);
         $stmt->bindValue(':firstName', $firstName, SQLITE3_TEXT);
         $stmt->bindValue(':lastName', $lastName, SQLITE3_TEXT);
@@ -55,13 +62,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindValue(':cvPath', $cvPath, SQLITE3_TEXT);
         $stmt->bindValue(':passportPath', $passportPath, SQLITE3_TEXT);
 
-        // Execute the query and check for success
+        // Execute the query
         if ($stmt->execute()) {
             echo "<p>Application submitted successfully!</p>";
+            echo '<script>
+                setTimeout(function() {
+                    window.location.href = "index.html"; // Replace "index.html" with your homepage URL
+                }, 3000); // Redirect after 3 seconds
+            </script>';
         } else {
             echo "<p>Error submitting the application.</p>";
+            echo '<script>
+                setTimeout(function() {
+                    window.location.href = "index.html"; // Redirect to homepage even on error
+                }, 5000); // Redirect after 5 seconds for errors
+            </script>';
         }
-
+        
         // Close the database connection
         $db->close();
     } catch (Exception $e) {
