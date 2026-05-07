@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection
-    $db = new SQLite3('admission.db');
+    $db = new SQLite3(__DIR__ . '/contact.db');
 
     // Collect form data
     $name = htmlspecialchars($_POST['name']);
